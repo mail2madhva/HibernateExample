@@ -19,14 +19,16 @@ public class TestUser {
 		
 		new SchemaExport(config).create(true, true);
 		
-//		SessionFactory factory = config.buildSessionFactory();
-//		Session session = factory.getCurrentSession();
-//		
-//		
-//		User first = new User();
-//		first.setUser_id(1);
-//		first.setUser_name("Madhu");
+		SessionFactory factory = config.buildSessionFactory();
+		Session session = factory.getCurrentSession();
 		
+		session.beginTransaction();
+		User first = new User();
+		first.setUser_id(1);
+		first.setUser_name("Madhu");
+		
+		session.save(first);
+		session.getTransaction().commit();
 	}
 
 }
